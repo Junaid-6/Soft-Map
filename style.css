@@ -1,0 +1,77 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(225, 135, 17);
+    font-size: 1em;
+    color: white;
+    }
+#workspaceZoom{
+    position: absolute;
+    top: 30%;
+}
+
+#map { 
+    position: fixed; 
+    top: 0;
+}
+
+#canvas1{   
+    margin-top: 4.4%;
+    margin-left: 0%;
+    background-color: black;   
+    z-index: 1000;
+    border: 2px rgb(173, 21, 21) solid; 
+} 
+ 
+a{
+    text-decoration: none;
+}
+#homwNavbar{
+    position: fixed;
+    padding: 1%;
+    width: 98%;
+    height: 5%;
+    background-color: rgb(47, 29, 29);
+    display: flex;  
+    align-items: center;
+    justify-content: space-between;
+}
+.dropdown {
+    position: relative; 
+    display: inline-block;
+    cursor: pointer;
+  }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+  }
+
+#helpCenter{
+    position: absolute;
+    top: 100%;
+    right: 84%;
+    left: 0;  
+}
+
+.Option {
+    padding: 8px;
+    background-color: #93aa93;
+    border: 1px solid #fffb00;
+}
+
+#sideBar{
+    padding-left: 1%;
+    position: fixed;
+    top: 9.4%; 
+    right: .2%;
+    height: 87.7%;
+    width: 11.5%;
+    background-color: rgb(47, 29, 29);
+    border: 9px rgb(255, 0, 255) groove;
+}
+
+ 
