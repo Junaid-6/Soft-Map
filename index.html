@@ -1,59 +1,136 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="UTF-8" />
     <title>🎨 Soft Map</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://kit.fontawesome.com/bc28bc8159.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="stylesheet" href="animation.css"> 
-
-     
-</head>
-<body>   
-    <nav id="homwNavbar">        
-        <div class="helpDropdown">
-          Helpe🔻
-          <div id="helpCenter" class="dropdown-content">
-            <div class="Option help AddHover" data-value="addInformation"><a href="#">🙋 Account Creation</a></div>
-            <div class="Option help AddHover" data-value="environmentSetting"><a href="#">🎮 Environment Setting</a></div>
-            <div class="Option help AddHover" data-value="layerCreation"><a href="#">♂️ Layer Creation</a></div>
-            <div class="Option help AddHover" data-value="georeferencing"><a href="#">⭕ Georeferencing</a></div>
+    
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animation.css" />
+  </head>
+  <body>
+    <nav id="homwNavbar">
+      <div class="helpDropdown Hover">
+        Help🔻
+        <div id="helpCenter" class="dropdown-content">
+          <div class="Option help AddHover" data-value="addInformation">
+            <a href="#">🙋 Account Creation</a>
           </div>
-        </div>       
-        
-        <div class="MapAddDropdown">
-          Add Map🔻
-          <div id="MapAddCenter" class="dropdown-content">
-            <div class="baseMap Option AddHover" data-value="imageMap">Image <input type="file" class="baseMap" id="imageInput" accept="image/*"></div>            
+          <div class="Option help AddHover" data-value="environmentSetting">
+            <a href="#">🎮 Environment Setting</a>
           </div>
-        </div> 
-        <a href="#">GIS Mapping</a>
-
-        <div id="scale"></div>
-
-        <div>Zoom  🔍<input type="range" max="90" min="10" value="90" id="workspaceZoom"></div>       
-        <button id="homeButton"><i class="fa-solid fa-bars" style="color: #511f29;"></i></button>
-       
-      </nav>
-
-      <div id="sideBar">
-        <p>Feature
-            <select id="featureType">
-                <option value="point">Point</option>
-                <option value="line">Line</option>
-                <option value="polygon">Polygon</option>
-            </select> 
-        </p>     
-           
+          <div class="Option help AddHover" data-value="layerCreation">
+            <a href="#">♂️ Layer Creation</a>
+          </div>
+          <div class="Option help AddHover" data-value="georeferencing">
+            <a href="#">⭕ Georeferencing</a>
+          </div>
+        </div>
       </div>
 
-    <div id="workspace">
-        <canvas id="canvas1"> 
-        </canvas>
-    </div> 
+      <div class="MapAddDropdown Hover">
+        Add Map🔻
+        <div id="MapAddCenter" class="dropdown-content">
+          <div id="image" class="baseMap Option AddHover help" data-value="imageMap"> 
+            <input
+              type="file"
+              class="baseMap Option AddHover help"
+              id="imageInput"
+              accept="image/*"
+            /> 
+            
+            <input
+            type="file"
+            class="baseMap Option AddHover help"
+            id="imageInput"
+            accept="image/*"
+          />
+             
+          </div>
+        </div>
+      </div>
+      <a href="#" class="Hover">GIS Mapping</a> 
 
-    <script src="app.js" ></script>   
-</body>  
+      <div id="pan" class="Hover">🪬</div> 
+      
+      <div class="navbar">
+        <div class="user-dropdown">
+            <div class="user">
+                <img src="placeholder.jpg" class="user-avatar">
+                <span class="username">John Doe</span>
+            </div>
+
+            <div class="dropdown-content">
+                <a href="#" class="Option help AddHover">Profile</a>
+                <a href="#" class="Option help AddHover">Settings</a>
+                <a href="#" class="Option help AddHover">Logout</a>
+            </div>
+        </div>
+        
+    </div>
+       
+    </nav>
+
+    <div id="sideBar">
+
+      <div class="container"> 
+        <button id="createLayer" class="Hover Option help">New Layer</button>
+        <div class="layerPopup" id="layerForm">
+          <span class="close" id="closeButton">❌</span>
+          <div id="layerFormTitle">Layer</div>
+          <form id="layerProperties">            
+            <!-- Your form fields go here -->
+            <label for="layerName">Name:</label>
+            <input type="text" id="layerName" name="layerName" /> 
+            <label for="projection" name="projection">Projection</label>
+            <select id="projection" name="projection" class="layer-input">
+              <option value="EPSG:4326">EPSG:4326 (WGS 84)</option>
+              <option value="EPSG:3857">EPSG:3857 (Web Mercator)</option>
+              <option value="EPSG:32633">EPSG:32633 (WGS 84 / UTM zone 33N)</option>
+              <option value="EPSG:2193">EPSG:2193 (NZGD2000)</option>               
+            </select>
+            
+            <label for="layerType">Type:</label>
+            <select id="layerType" name="layerType">
+              <option value="point">🔸 Point</option>
+              <option value="line">〽️ Line</option>
+              <option value="polygon">🔶 Polygon</option>
+            </select>
+            <br />
+            <label for="layerColor">Color:</label>
+            <input type="color" id="layerColor" name="layerColor" />
+            <br />
+            <label for="layerSize">Size:</label>
+            <input type="number" id="layerSize" name="layerSize" min="1" />
+            <br />
+            <button type="submit" id="btnAdd">Add</button>
+          </form>
+        </div>
+      </div>
+     
+
+      <div id="layersBar"> 
+      </div>
+    </div>
+
+    <div id="toolBar">
+
+    </div>
+
+    <div id="workspace">
+      <canvas id="mainCanvas" class="canvas"></canvas> 
+    </div>
+
+    <footer>      
+      <div id="foot">
+        <div id="search"><input type="search" id="searchTool" placeholder="Search Tool"></div>
+        <div id="scale"></div>
+      </div>
+    </footer>
+
+    <!-- <script src="animation.js"></script> -->
+    <script src="app.js"></script>
+  </body>
 </html>

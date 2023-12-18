@@ -1,46 +1,65 @@
-body{
+*{
+    box-sizing: border-box; 
+    padding:0.2;
+}
+
+body {
     margin: 0;
     padding: 0;
-    background-color: rgb(225, 135, 17);
+    background-color: #f50404; /* Dark background color */
     font-size: 1em;
-    color: white;
-    }
-#workspaceZoom{
+    color: #f2f6f7; /* Light text color */
+     
+}
+
+
+
+body:hover {
+    background-color: #ff7f7f; /* Lighter background color on hover */
+}
+
+#workspaceZoom {
     position: absolute;
     top: 30%;
 }
 
-#map { 
-    position: fixed; 
+#map {
+    position: fixed;
     top: 0;
 }
 
-#canvas1{   
-    margin-top: 4.4%;
-    margin-left: 0%;
-    background-color: black;   
-    z-index: 1000;
-    border: 2px rgb(173, 21, 21) solid; 
-} 
+#mainCanvas{ 
+    background-color: #36c922;     
+}
  
-a{
+.canvas{
+    position: absolute; 
+    background-color:transparent; /* Darker canvas color */ 
+    z-index: -10;
+}
+ 
+
+a {
     text-decoration: none;
+    color: #f2f6f7; /* Light text color */
 }
-#homwNavbar{
+
+#homwNavbar {
     position: fixed;
-    padding: 1%;
-    width: 98%;
-    height: 5%;
-    background-color: rgb(47, 29, 29);
-    display: flex;  
+    width: 100%;
+    height: 7%;
+    background-color: #010101;
+    display: flex; 
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly; 
+    padding-right: 5%; 
 }
+
 .dropdown {
-    position: relative; 
+    position: relative;
     display: inline-block;
-    cursor: pointer;
-  }
+    cursor: pointer; 
+}
 
 .dropdown-content {
     display: none;
@@ -48,30 +67,189 @@ a{
     z-index: 1;
     top: 100%;
     left: 0;
-  }
+}
 
-#helpCenter{
+#helpCenter {
     position: absolute;
     top: 100%;
     right: 84%;
-    left: 0;  
+    left: 0;
 }
 
 .Option {
     padding: 8px;
-    background-color: #93aa93;
-    border: 1px solid #fffb00;
+    background-color: #1e1d1d; /* Blue color */
+    border: 1px solid #b8b8b8; /* Yellow border */
 }
 
-#sideBar{
-    padding-left: 1%;
+#pan{ 
+    font-size: 20px;
+}
+.selected {
+    border: 2px solid red;  
+} 
+#image{
+    width: 0;
+    height: 0;  
     position: fixed;
-    top: 9.4%; 
-    right: .2%;
-    height: 87.7%;
-    width: 11.5%;
-    background-color: rgb(47, 29, 29);
-    border: 9px rgb(255, 0, 255) groove;
+    left: 20%;
+}
+  
+#sideBar { 
+    position: fixed;
+    padding: 1%;
+    top: 6.6%;
+    right:0%;
+    height: 90%;
+    width: 14.5%;
+    background-color: #0a0c0e;  
+    z-index: -1;
 }
 
+#layersBar{
+    width: 100%;
+    height: 100%;
+    color: #f5f5f5;
+    padding: 10.1%;
+    background-color:  #0a0c0e; 
+}
+
+#foot{
+    padding-left: 2%; 
+    position: fixed;
+    display: flex;
+    align-items: center; 
+    justify-content: space-evenly;
+    bottom: 0;
+    background-color:#0a0c0e;
+    height: 5%;
+    width: 100%;
+}
+#toolBar{
+    background-color: #0a0c0e;
+    width: 5%;
+    height: 70%;
+    position: fixed;
+    top: 6.6%;
+    left: 0%;
+    height: 90%;
+    width: 3.5%;
+    z-index: -1;
+}
+
+.container {
+    color: #0a0a01;
+}
+
+
+.layerPopup {
+    display: none;
+    position: absolute;
+    width: 300px;
+    top: 50%;
+    right: 250%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #d67e8c; 
+    box-shadow: 0 4px 8px rgba(49, 11, 11, 0.1);
+    z-index: 1;
+}
  
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 10px;
+    z-index: 1; /* Set a higher z-index to ensure it's above other elements */
+}
+
+.layerPopup form { 
+    max-width: 300px;
+    margin: 2px auto;
+    font-weight:bold ;
+    padding: 2px; 
+    border-radius: 8px;
+}
+
+.layerPopup form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.layerPopup form input,
+.layerPopup form select,
+.layerPopup form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.layerPopup form input[type="color"] {
+    height: 36px;
+}
+
+.layerPopup form button {
+    background-color: #2ecc71; /* Green color */
+    color: #fff;
+    cursor: pointer;
+}
+
+.layerPopup form button:hover {
+    background-color: #27ae60; /* Darker green on hover */
+}
+
+.layerPopup form .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+    color: #999;
+    font-size: 20px;
+}
+
+.layerPopup form .close:hover {
+    color: #c0392b; /* Red color on hover */
+}
+
+#layerFormTitle {
+    text-align: center;
+    font-size: 30px;
+}
+#btnAdd{
+    width: fit-content;
+    background-color: green;
+}
+
+.layerPopup form .layer-input { 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+ 
+#workspace{
+    width: 80.6%;
+    height: 84.8%;
+    position: fixed; 
+    top: 7.7%;
+    left: 3.9%;
+    background-color: #0a4d79; 
+    z-index: -10;
+}
+
+#userImage{
+    width: 5%;
+    height: 2.5%;
+    border-radius: 50%;
+    background-color: #36c922;
+}
+
+#createLayer{
+    text-align: center;
+    position: relative;    
+    color: white;
+}

@@ -1,7 +1,77 @@
 .AddHover:hover{
-    background-color: rgb(255, 0, 212);
+    background-color: rgb(90, 90, 90);
+}
+.margin{
+    margin-top: 1%;
+}
+.Hover{ 
+    background-color: rgb(90, 90, 90);
+    border-radius: 5%;
+    padding: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    box-sizing: border-box;
 }
 
+.Hover:hover{
+    border: 2px solid red; 
+    cursor: pointer;
+}
 .helpDropdown{
     cursor: pointer; 
+}
+
+/* User signup */
+
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    cursor: pointer; 
+}
+
+.user-avatar {
+    border-radius: 5%;
+    padding: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+    margin-right: 0.5rem;
+    background-color: rgb(90, 90, 90);
+}
+
+#userPage{ 
+    width: 50%;
+}
+.username {
+    color: #fff;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+}
+
+.user-dropdown:hover .dropdown-content { 
+    display: flex;
+    flex-direction: column;
+}
+
+
+#layersBar{
+    margin-top: 5%;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;  
+    background-color: rgb(7, 247, 59); 
 }
